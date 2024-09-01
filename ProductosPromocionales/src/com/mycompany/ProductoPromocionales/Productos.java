@@ -1,63 +1,54 @@
 package com.mycompany.ProductoPromocionales;
-
 public class Productos {
-	private String codigo;
-	private String nombre;
-	private Integer precio;
-	private Integer cantidad;
-	
+    private String codigo;
+    private String nombre;
+    private double precio;
+    private int cantidad;
 
-	public Productos() {
-		// TODO Auto-generated constructor stub
-		codigo = null;
-		nombre = null;
-		precio = null;
-		cantidad = null;
-	}
+    public Productos(String codigo, String nombre, double precio, int cantidad) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.cantidad = cantidad;
+    }
 
+    public String getCodigo() {
+        return codigo;
+    }
 
-	public String getCodigo() {
-		return codigo;
-	}
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
 
+    public String getNombre() {
+        return nombre;
+    }
 
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
+    public double getPrecio() {
+        return precio;
+    }
 
-	public String getNombre() {
-		return nombre;
-	}
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
 
+    public int getCantidad() {
+        return cantidad;
+    }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
 
-
-	public Integer getPrecio() {
-		return precio;
-	}
-
-
-	public void setPrecio(Integer precio) {
-		this.precio = precio;
-	}
-
-
-	public Integer getCantidad() {
-		return cantidad;
-	}
-
-
-	public void setCantidad(Integer cantidad) {
-		this.cantidad = cantidad;
-	}
-
-
-	
-	
-	
-
+    public void mostrarInformacion() {
+        System.out.println("Código: " + codigo);
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Precio: Q" + precio);
+        System.out.println("Cantidad: " + cantidad);
+    }
 }
+
