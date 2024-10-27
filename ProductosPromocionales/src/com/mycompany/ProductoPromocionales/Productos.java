@@ -1,39 +1,52 @@
 package com.mycompany.ProductoPromocionales;
+
 public class Productos {
-    private String codigo;
-    private String nombre;
+    private int idCompras; 
+    private String proveedor;
+    private String producto;
+    private String categoria;
+    private int cantidad; 
     private double precio;
-    private int cantidad;
 
-    public Productos(String codigo, String nombre, double precio, int cantidad) {
-        this.codigo = codigo;
-        this.nombre = nombre;
-        this.precio = precio;
+    public Productos(int idCompras, String proveedor, String producto, String categoria, int cantidad, double precio) {
+        this.idCompras = idCompras;
+        this.proveedor = proveedor;
+        this.producto = producto;
+        this.categoria = categoria;
         this.cantidad = cantidad;
-    }
-
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public double getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(double precio) {
         this.precio = precio;
+    }
+
+    public int getIdCompras() {
+        return idCompras;
+    }
+
+    public void setIdCompras(int idCompras) {
+        this.idCompras = idCompras;
+    }
+
+    public String getProveedor() {
+        return proveedor;
+    }
+
+    public void setProveedor(String proveedor) {
+        this.proveedor = proveedor;
+    }
+
+    public String getProducto() {
+        return producto;
+    }
+
+    public void setProducto(String producto) {
+        this.producto = producto;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public int getCantidad() {
@@ -44,11 +57,21 @@ public class Productos {
         this.cantidad = cantidad;
     }
 
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
     public void mostrarInformacion() {
-        System.out.println("Código: " + codigo);
-        System.out.println("Nombre: " + nombre);
-        System.out.println("Precio: Q" + precio);
+        System.out.println("ID Compra: " + idCompras);
+        System.out.println("Proveedor: " + proveedor);
+        System.out.println("Producto: " + producto);
+        System.out.println("Categoría: " + categoria);
         System.out.println("Cantidad: " + cantidad);
+        System.out.println("Precio: Q" + precio);
     }
 }
 

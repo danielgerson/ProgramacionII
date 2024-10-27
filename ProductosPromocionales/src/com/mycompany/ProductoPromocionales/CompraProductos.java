@@ -1,31 +1,45 @@
 package com.mycompany.ProductoPromocionales;
 
-import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
 
 public class CompraProductos {
-    private ArrayList<TipoProducto> productosComprados;
-    private ArrayList<Integer> cantidadesCompradas;
+    private Scanner scanner;
 
     public CompraProductos() {
-        productosComprados = new ArrayList<>();
-        cantidadesCompradas = new ArrayList<>();
+        this.scanner = new Scanner(System.in);
     }
 
-    public void agregarProducto(TipoProducto producto, int cantidad) {
-        productosComprados.add(producto);
-        cantidadesCompradas.add(cantidad);
-    }
+    public void agregarCompra() {
+        System.out.print("Ingrese el nombre del producto: ");
+        String producto = scanner.nextLine();
 
-    public void mostrarResumenCompra() {
-        System.out.println("*** Resumen de Compra ****");
-        double total = 0;
-        for (int i = 0; i < productosComprados.size(); i++) {
-            TipoProducto producto = productosComprados.get(i);
-            int cantidad = cantidadesCompradas.get(i);
-            double subtotal = producto.getPrecio() * cantidad;
-            System.out.println(producto.getNombre() + " - Cantidad: " + cantidad + " - Subtotal: Q" + subtotal);
-            total += subtotal;
+        System.out.print("Ingrese la cantidad: ");
+        int cantidad = scanner.nextInt();
+
+        System.out.print("Ingrese el precio: ");
+        double precio = scanner.nextDouble();
+
+        System.out.print("Ingrese el nombre del proveedor: ");
+        String proveedor = scanner.next();
+
+        String insertQuery = "INSERT INTO Compras (Producto, Proveedor, Cantidad, Precio) VALUES (?, ?, ?, ?)";
+        
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
+
+            preparedStatement.setString(1, producto);
+            preparedStatement.setString(2, proveedor);
+            preparedStatement.setInt(3, cantidad);
+            preparedStatement.setDouble(4, precio);
+            
+            preparedStatement.executeUpdate();
+            System.out.println("Compra agregada con éxito.");
+
+        } catch (SQLException e) {
+            System.out.println("Error al agregar la compra a la base de datos: " + e.getMessage());
         }
-        System.out.println("Total a pagar: Q" + total);
     }
 }
